@@ -99,7 +99,7 @@ void ttn_register(void (*callback)(uint8_t message));
 #define LED_PIN         14
 #define BUTTON_PIN      39
 #elif defined(T_BEAM_V10)
-#define BUTTON_PIN      38
+#define BUTTON_PIN      35
 #endif
 
 // -----------------------------------------------------------------------------
@@ -114,7 +114,7 @@ void ttn_register(void (*callback)(uint8_t message));
 
 #define GPS_SERIAL_NUM  1
 #define GPS_BAUDRATE    9600
-#define USE_GPS         1
+#define USE_GPS         0
 
 #if defined(T_BEAM_V07)
 #define GPS_RX_PIN      12
@@ -128,16 +128,16 @@ void ttn_register(void (*callback)(uint8_t message));
 // LoRa SPI
 // -----------------------------------------------------------------------------
 
-#define SCK_GPIO        5
-#define MISO_GPIO       19
-#define MOSI_GPIO       27
-#define NSS_GPIO        18
+#define SCK_GPIO        25
+#define MISO_GPIO       27
+#define MOSI_GPIO       26
+#define NSS_GPIO        33
 #if defined(T_BEAM_V10)
-#define RESET_GPIO      14
+#define RESET_GPIO      32
 #else
 #define RESET_GPIO      23
 #endif
-#define DIO0_GPIO       26
+#define DIO0_GPIO       39
 #define DIO1_GPIO       33 // Note: not really used on this board
 #define DIO2_GPIO       32 // Note: not really used on this board
 
@@ -149,6 +149,36 @@ void ttn_register(void (*callback)(uint8_t message));
 #define GPS_POWER_CTRL_CH     3
 #define LORA_POWER_CTRL_CH    2
 #define PMU_IRQ               35
+
+
+
+//LEDS
+#define LEDC_HS_TIMER          LEDC_TIMER_0
+#define LEDC_HS_MODE           LEDC_HIGH_SPEED_MODE
+#define LEDC_LS_TIMER          LEDC_TIMER_1
+#define LEDC_LS_MODE           LEDC_LOW_SPEED_MODE
+
+#define LEDC_2       (15)
+#define LEDC_2_CHANNEL    LEDC_CHANNEL_2
+
+#define LEDC_0       (12)
+#define LEDC_0_CHANNEL    LEDC_CHANNEL_0
+
+#define LEDC_1       (13)
+#define LEDC_1_CHANNEL    LEDC_CHANNEL_1
+
+
+
+// #define LEDC_LS_CH2_GPIO       (15)
+// #define LEDC_LS_CH2_CHANNEL    LEDC_CHANNEL_2
+// #define LEDC_LS_CH3_GPIO       (5)
+// #define LEDC_LS_CH3_CHANNEL    LEDC_CHANNEL_3
+
+#define LEDC_TEST_CH_NUM       (4)
+//#define LEDC_TEST_DUTY         (4000)
+#define LEDC_TEST_DUTY         (255)
+#define LEDC_TEST_FADE_TIME    (3000)
+#define LEDC_AUTO_CLK   0
 
 
 bool ssd1306_found = false;
